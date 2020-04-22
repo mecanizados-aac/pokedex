@@ -27,7 +27,7 @@ application.get('/author', (request, response) => {
 });
 
 application.get('/contact', (request, response) => {
-    const contact = {contact: ' email:' + apiInfo.contactInfo.email +
+    const contact = {contact: 'email:' + apiInfo.contactInfo.email +
      ', wsp:' + apiInfo.contactInfo.wsp};
     response.send(contact);
 });
@@ -37,7 +37,14 @@ application.get('/', (request, response) => {
 });
 
 application.get('/info-api', (request, response) => {
-    response.send(apiInfo);
+    const name = {name: apiInfo.name};
+    const version = {version: apiInfo.version};
+    const author = {author: apiInfo.author};
+    const contact = {contact: 'email:' + apiInfo.contactInfo.email +
+     ', wsp:' + apiInfo.contactInfo.wsp};
+    const infoApiCuerpo = {name, version, author, contact}
+    const infoApi = {Info: infoApiCuerpo}
+    response.send(infoApi);
 });
 
 
