@@ -27,12 +27,12 @@ application.get('/author', (request, response) => {
 });
 
 application.get('/contact', (request, response) => {
-    const contact = {contact: apiInfo.contactInfo};
+    const contact = {contact: apiInfo.contactInfo.email + "<br>" + apiInfo.contactInfo.wsp};
     response.send(contact);
 });
 
 application.get('/', (request, response) => {
-    response.send('Respuesta del servidor');
+    response.send('Bienvenido a ' + apiInfo.name + " de " + apiInfo.author + "!");
 });
 
 application.get('/info-api', (request, response) => {
