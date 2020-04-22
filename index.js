@@ -37,14 +37,7 @@ application.get('/', (request, response) => {
 });
 
 application.get('/info-api', (request, response) => {
-    const name = {name: apiInfo.name};
-    const version = {version: apiInfo.version};
-    const author = {author: apiInfo.author};
-    const contact = {contact: 'email:' + apiInfo.contactInfo.email +
-     ', wsp:' + apiInfo.contactInfo.wsp};
-    const infoApiCuerpo = {name, version, author, contact}
-    const infoApi = {Info: infoApiCuerpo}
-    response.send(infoApi);
+    response.send(apiInfo);
 });
 
 
