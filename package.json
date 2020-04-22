@@ -4,12 +4,16 @@
   "description": "First Api",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "First Repository"
   },
+  "keyword":[
+    "Prog3"
+  ],  
   "author": "Aldo Adrian Castillo",
   "license": "ISC",
   "dependencies": {
