@@ -27,7 +27,9 @@ application.get('/author', (request, response) => {
 });
 
 application.get('/contact', (request, response) => {
-    const contact = {contact: apiInfo.contactInfo.email + "<br>" + apiInfo.contactInfo.wsp};
+    const contact = {contact: + "\n" + "email: " + 
+    apiInfo.contactInfo.email + "\n" + "wsp: " + 
+    apiInfo.contactInfo.wsp};
     response.send(contact);
 });
 
