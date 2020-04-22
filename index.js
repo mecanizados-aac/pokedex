@@ -27,8 +27,7 @@ application.get('/author', (request, response) => {
 });
 
 application.get('/contact', (request, response) => {
-    const contact = {contact: + '\nemail' +
-    apiInfo.contactInfo.email + '\nwsp:' + 
+    const contact = {email: + apiInfo.contactInfo.email + ', wsp:' + 
     apiInfo.contactInfo.wsp};
     response.send(contact);
 });
