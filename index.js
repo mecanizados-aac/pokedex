@@ -27,10 +27,10 @@ application.get('/author', (request, response) => {
 });
 
 application.get('/contact', (request, response) => {
-    const contact = {contact: + "\n" + "email: " + 
-    apiInfo.contactInfo.email + "\n" + "wsp: " + 
+    const contact = {contact: + '\n' + 'email' + 
+    apiInfo.contactInfo.email + '\n' + 'wsp:' + 
     apiInfo.contactInfo.wsp};
-    response.send(document.write(contact));
+    response.send(contact);
 });
 
 application.get('/', (request, response) => {
