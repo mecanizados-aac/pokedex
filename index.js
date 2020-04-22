@@ -27,13 +27,13 @@ application.get('/author', (request, response) => {
 });
 
 application.get('/contact', (request, response) => {
-    const contact = {contact: + ' email:' + apiInfo.contactInfo.email +
+    const contact = {contact: ' email:' + apiInfo.contactInfo.email +
      ', wsp:' + apiInfo.contactInfo.wsp};
     response.send(contact);
 });
 
 application.get('/', (request, response) => {
-    response.send('Bienvenido a ' + apiInfo.name + " de " + apiInfo.author + "!");
+    response.send('Bienvenido a ' + apiInfo.name + ' de ' + apiInfo.author + ' !');
 });
 
 application.get('/info-api', (request, response) => {
