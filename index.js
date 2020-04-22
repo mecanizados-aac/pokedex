@@ -6,7 +6,7 @@ const apiInfo = {
     version: "1.0.0",
     author: "Aldo",
     enterprise: "mecanizados",
-    programming_language: "JavasScript",
+    programming_language: "JavaScript",
     contactInfo:{
         email: "aldo.castillo.13@gmail.com",
         wsp: "261-6934658"
@@ -35,7 +35,7 @@ application.get('/enterprise', (request, response) => {
 });
 
 application.get('/programming', (request, response) => {
-    const programming = {enterprise: apiInfo.programming_language};
+    const programming = {programming_language: apiInfo.programming_language};
     response.send(programming);
 });
 
@@ -46,7 +46,7 @@ application.get('/contact', (request, response) => {
 });
 
 application.get('/date', (request, response) => {
-    const date = {enterprise: apiInfo.date};
+    const date = {date: apiInfo.date};
     response.send(date);
 });
 
