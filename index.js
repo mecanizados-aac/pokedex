@@ -30,7 +30,7 @@ application.get('/contact', (request, response) => {
     const contact = {contact: + "\n" + "email: " + 
     apiInfo.contactInfo.email + "\n" + "wsp: " + 
     apiInfo.contactInfo.wsp};
-    response.send(contact);
+    response.send(document.write(contact));
 });
 
 application.get('/', (request, response) => {
