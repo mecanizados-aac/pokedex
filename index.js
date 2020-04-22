@@ -4,11 +4,14 @@ const application = express();
 const apiInfo = {
     name: "First Express Api",
     version: "1.0.0",
-    author: "aldo_mec_acc16",
+    author: "Aldo",
+    enterprise: "mecanizados",
+    programming_language: "JavasScript",
     contactInfo:{
         email: "aldo.castillo.13@gmail.com",
         wsp: "261-6934658"
-    }
+    },
+    date: "22-04-2020"
 }
 
 application.get('/name', (request, response) => {
@@ -26,10 +29,25 @@ application.get('/author', (request, response) => {
     response.send(author);
 });
 
+application.get('/enterprise', (request, response) => {
+    const enterprise = {enterprise: apiInfo.enterprise};
+    response.send(enterprise);
+});
+
+application.get('/programming', (request, response) => {
+    const programming = {enterprise: apiInfo.programming_language};
+    response.send(programming);
+});
+
 application.get('/contact', (request, response) => {
     const contact = {contact: 'email:' + apiInfo.contactInfo.email +
      ', wsp:' + apiInfo.contactInfo.wsp};
     response.send(contact);
+});
+
+application.get('/date', (request, response) => {
+    const date = {enterprise: apiInfo.date};
+    response.send(date);
 });
 
 application.get('/', (request, response) => {
