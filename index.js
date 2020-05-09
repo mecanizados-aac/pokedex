@@ -1,4 +1,7 @@
 const express = require ('express');
+const bodyParser = require('body-parser');
+const cors = require('corse');
+
 const application = express();
 
 const apiInfo = {
