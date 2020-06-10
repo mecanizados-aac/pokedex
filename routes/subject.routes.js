@@ -1,5 +1,5 @@
 module.exports = (app) => {
-  const subjectController = require("../controllers/subject.controller.js");
+  const subjectController = require("../controllers/subject.controller");
   let router = require("express").Router();
   const URL_SUBJECT = "/subject";
 
@@ -7,7 +7,7 @@ module.exports = (app) => {
   router.post(URL_SUBJECT, subjectController.create);
   router.get(URL_SUBJECT + ":id", subjectController.findOne);
   router.put(URL_SUBJECT + ":id", subjectController.update);
-  router.delete(URL_SUBJECT + ":id", subjectController.delete);
+  //router.delete(URL_SUBJECT + ":id", subjectController.delete);
 
   app.use("/api" + URL_SUBJECT, router);
 };

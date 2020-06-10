@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 
 const sequelizeInstanceDB = new Sequelize(
   dbConfig.DB,
-  dbConfig.USERS,
+  dbConfig.USER,
   dbConfig.PASSWORD,
   {
     host: dbConfig.HOTS,
@@ -21,7 +21,7 @@ const sequelizeInstanceDB = new Sequelize(
 const db = {};
 
 db.Sequelize = Sequelize;
-db.sequelize = sequelizeInstanceDB;
-db.Subject = require("./subject.model.js")(sequelizeInstanceDB, Sequelize);
+db.sequelizeInstanceDB = sequelizeInstanceDB;
+db.Subject = require("./subject.model")(sequelizeInstanceDB, Sequelize);
 
 module.exports = db;

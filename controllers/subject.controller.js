@@ -1,7 +1,7 @@
 const db = require("../models/index");
 const Subject = db.Subject;
 const Op = db.Sequelize.Op;
-const errorHandler = require("../helpers/functions/errorHandler");
+const errorHandler = require("../helpers/functions");
 
 exports.create = (req, resp) => {
   // Llegó una petición date - ip.
@@ -36,7 +36,7 @@ exports.create = (req, resp) => {
 
 exports.findAll = (req, resp) => {
   const title = req.query.title;
-  const condition = title ? { title: { [Op.like]: "%${title}%" } } : null;
+  const condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   Subject.findAll({ where: condition })
     .then((data) => {
       resp.send(data);
@@ -69,14 +69,14 @@ exports.update = (req, resp) => {
 
   Subject.update(req.body, { where: { id: id } })
     .then((num) => {
-      if (num === 1) {
+      if (num == 1) {
         // -1 => Error, 0 => No lo ejecutó, 1 => OK, 2 => Not available.
         resp.send({
           message: "Subject was updated successfully",
         });
       } else {
         resp.status(404).send({
-          message: `Cannot update Subject with ${id}, probably the entity doesn´t exists.`,
+          message: `Cannot update Subject with id=${id}, probably the entity doesn´t exists.`,
         });
       }
     })
@@ -90,7 +90,7 @@ exports.delete = (req, resp) => {
 
   Subject.destroy(req.body, { where: { id: id } })
     .then((num) => {
-      if (num === 1) {
+      if (num == 1) {
         // -1 => Error, 0 => No lo ejecutó, 1 => OK, 2 => Not available.
         resp.send({
           message: "Subject was deleted successfully",
