@@ -1,25 +1,25 @@
 const db = require("../models/index");
-const Subject = db.Subject;
+const Student = db.Student;
 const Op = db.Sequelize.Op;
 const errorHandler = require("../helpers/functions");
 
 exports.create = (req, resp) => {
   // Llegó una petición date - ip.
-  if (!req.body.title || !req.body.cohort) {
+  if (!req.body.name || !req.body.surname) {
     resp.status(400).send({
       message: "Content cannot be emply",
     });
     return;
   }
 
-  const subject = {
-    title: req.body.title,
-    description: req.body.description,
-    cohort: req.body.cohort,
+  const student = {
+    name: req.body.name,
+    surname: req.body.surname,
+    birthdate: req.body.birthdate,
   };
 
   // Se intenta crear una materia.
-  Subject.create(subject)
+  Student.create(student)
     .then((data) => {
       // Cuándo se resuelva satisfactoriamente.
       resp.send(data);
@@ -35,9 +35,9 @@ exports.create = (req, resp) => {
 };
 
 exports.findAll = (req, resp) => {
-  const title = req.query.title;
-  const condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-  Subject.findAll({ where: condition })
+  const surname = req.query.surname;
+  const condition = surname ? { surname: { [Op.like]: `%${surname}%` } } : null;
+  Student.findAll({ where: condition })
     .then((data) => {
       resp.send(data);
     })
@@ -52,7 +52,7 @@ exports.findAll = (req, resp) => {
 exports.findOne = (req, resp) => {
   const id = req.params.id;
 
-  Subject.findByPk(id)
+  Student.findByPk(id)
     .then((data) => {
       resp.send(data);
     })
@@ -67,41 +67,41 @@ exports.findOne = (req, resp) => {
 exports.update = (req, resp) => {
   const id = req.params.id;
 
-  Subject.update(req.body, { where: { id: id } })
+  Student.update(req.body, { where: { id: id } })
     .then((num) => {
       if (num == 1) {
         // -1 => Error, 0 => No lo ejecutó, 1 => OK, 2 => Not available.
         resp.send({
-          message: "Subject was updated successfully",
+          message: "Student was updated successfully",
         });
       } else {
         resp.status(404).send({
-          message: `Cannot update Subject with id=${id}, probably the entity doesn´t exists.`,
+          message: `Cannot update Student with id=${id}, probably the entity doesn´t exists.`,
         });
       }
     })
     .catch((err) => {
-      errorHandler(resp, "Error updating Subject");
+      errorHandler(resp, "Error updating Student");
     });
 };
 
 exports.delete = (req, resp) => {
   const id = req.params.id;
 
-  Subject.destroy({ where: { id: id } })
+  Student.destroy({ where: { id: id } })
     .then((num) => {
       if (num == 1) {
         // -1 => Error, 0 => No lo ejecutó, 1 => OK, 2 => Not available.
         resp.send({
-          message: "Subject was deleted successfully",
+          message: "Student was deleted successfully",
         });
       } else {
         resp.status(404).send({
-          message: `Cannot delete Subject with id=${id}, probably the entity doesn´t exists.`,
+          message: `Cannot delete Student with id=${id}, probably the entity doesn´t exists.`,
         });
       }
     })
     .catch((err) => {
-      errorHandler(resp, "Error deleting Subject");
+      errorHandler(resp, "Error deleting Student");
     });
 };

@@ -4,12 +4,13 @@ const cors = require("cors");
 const application = express();
 const db = require("./models/index");
 const subjectController = require("./controllers/subject.controller");
+const studentController = require("./controllers/student.controller");
 const PORT = 3000 || process.env.PORT;
 
 const apiInfo = {
   name: "First Express Api",
   version: "1.0.0",
-  author: "Aldo",
+  author: "Aldo Castillo",
   enterprise: "mecanizados",
   programming_language: "JavaScript",
   contactInfo: {
@@ -31,7 +32,7 @@ db.sequelizeInstanceDB.sync();
 
 application.get("/", (req, resp) => {
   resp.json({
-    message: `Bienvenido a ${apiInfo.name} de ${apiInfo.author}!`,
+    message: `Bienvenido a ${apiInfo.name}, de ${apiInfo.author}!`,
   });
 });
 
@@ -56,6 +57,26 @@ application.delete("/api/subject/:id", (req, resp) => {
 });
 
 //require("./routes/subject.routes")(application);
+
+application.get("/api/student", (req, resp) => {
+  studentController.findAll(req, resp);
+});
+
+application.get("/api/student/:id", (req, resp) => {
+  studentController.findOne(req, resp);
+});
+
+application.post("/api/student/", (req, resp) => {
+  studentController.create(req, resp);
+});
+
+application.put("/api/student/:id", (req, resp) => {
+  studentController.update(req, resp);
+});
+
+application.delete("/api/student/:id", (req, resp) => {
+  studentController.delete(req, resp);
+});
 
 application.listen(PORT, () => {
   console.log(`Server running at port ${PORT}`);

@@ -23,5 +23,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelizeInstanceDB = sequelizeInstanceDB;
 db.Subject = require("./subject.model")(sequelizeInstanceDB, Sequelize);
+db.Student = require("./student.model")(sequelizeInstanceDB, Sequelize);
 
 module.exports = db;
