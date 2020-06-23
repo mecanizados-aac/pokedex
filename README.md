@@ -1,2 +1,7 @@
-This repo it's related to the Programación 3 subject of Belgrano Institute.
-This code will be growing as I learn in classes.
+> _This repo it's related to the Programación 3 subject of Belgrano Institute._
+
+> _This code will be growing, as I learn in classes._
+
+**powered by**
+
+[![mecanizados|aac](assets/aldo_castillo_mecanizados.jpg)](github.com/mecanizados-aac/)
