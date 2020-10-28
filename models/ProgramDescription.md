@@ -1,31 +1,31 @@
-# Construir una aplicación web que pueda recibir peticiones, las procese y devuelva un resultado.
+# Build a web application that can receive requests, process them and return a result.
 
-## Conceptos teóricos y su aplicación práctica.
+## Theoretical concepts and their practical application.
 
-**API (Backend) -> servidor/servicio web -> A través del protocolo HTTP**
+** API (Backend) -> server / web service -> Via HTTP protocol **
 
-- HTTP (conocimientos de SO).
-- ApiRest -> resfull (arquitectura de sistemas).
-- Clientes Rest.
-- Clientes Rest -> Postman.
-- Lenguaje de programación (NodeJS -> ExpressJS).
-    - JavaScript y ExpressJS nos resuelven el código.
-- Acceso a base de datos con librerías.
+- HTTP (knowledge of OS).
+- ApiRest -> resfull (systems architecture).
+- Clients Rest.
+- Rest Clients -> Postman.
+- Programming language (NodeJS -> ExpressJS).
+     - JavaScript and ExpressJS solve the code for us.
+- Database access with libraries.
 
-**Cliente Web (Frontend) -> JavaScript, HTML5 y CCS3**
-- HTML semántico.
-- CCS básico (Tailwind).
-- JavaScript puro.   
+** Web Client (Frontend) -> JavaScript, HTML5 and CCS3 **
+- Semantic HTML.
+- Basic CCS (Tailwind).
+- Pure JavaScript.
 
-**Herramientas**
+** Tools **
 - Git.
 - GitHub.
-- Console -> Shell, comandos, cmd.
-- Editores -> VSCode, Brackets, Atom.
+- Console -> Shell, commands, cmd.
+- Editors -> VSCode, Brackets, Atom.
 - XAMPP (MySQL).
-- Clientes de base de datos.
+- Database clients.
 
-**DevOps**
+** DevOps **
 - Deploy.
 - Testing.
 - Server Management.

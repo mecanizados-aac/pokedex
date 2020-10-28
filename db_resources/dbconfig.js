@@ -2,7 +2,7 @@ module.exports = {
   HOTS: "localhost",
   USER: "root",
   PASSWORD: "",
-  DB: "db_api_ef_belgrano2020",
+  DB: "pokeapi_db",
   dialect: "mysql",
   pool: {
     max: 5,

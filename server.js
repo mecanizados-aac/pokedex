@@ -2,10 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const application = express();
+
 const db = require("./models/index");
-const subjectController = require("./controllers/subject.controller");
-const studentController = require("./controllers/student.controller");
+
+const playerController = require("./controllers/player.controller");
+const pokemonController = require("./controllers/pokemon.controller");
+const teamController = require("./controllers/team.controller");
+
 const PORT = 3000 || process.env.PORT;
+
 
 const apiInfo = {
   name: "First Express Api",
@@ -36,47 +41,75 @@ application.get("/", (req, resp) => {
   });
 });
 
-application.get("/api/subject", (req, resp) => {
-  subjectController.findAll(req, resp);
+//Player
+
+application.get("/api/player", (req, resp) => {
+  playerController.findAll(req, resp);
 });
 
-application.get("/api/subject/:id", (req, resp) => {
-  subjectController.findOne(req, resp);
+application.get("/api/player/:id", (req, resp) => {
+  playerController.findOne(req, resp);
 });
 
-application.post("/api/subject/", (req, resp) => {
-  subjectController.create(req, resp);
+application.post("/api/player/", (req, resp) => {
+  playerController.create(req, resp);
 });
 
-application.put("/api/subject/:id", (req, resp) => {
-  subjectController.update(req, resp);
+application.put("/api/player/:id", (req, resp) => {
+  playerController.update(req, resp);
 });
 
-application.delete("/api/subject/:id", (req, resp) => {
-  subjectController.delete(req, resp);
+application.delete("/api/player/:id", (req, resp) => {
+  playerController.delete(req, resp);
 });
 
-//require("./routes/subject.routes")(application);
 
-application.get("/api/student", (req, resp) => {
-  studentController.findAll(req, resp);
+//Pokemon
+
+application.get("/api/pokemon", (req, resp) => {
+  pokemonController.findAll(req, resp);
 });
 
-application.get("/api/student/:id", (req, resp) => {
-  studentController.findOne(req, resp);
+application.get("/api/pokemon/:id", (req, resp) => {
+  pokemonController.findOne(req, resp);
 });
 
-application.post("/api/student/", (req, resp) => {
-  studentController.create(req, resp);
+application.post("/api/pokemon/", (req, resp) => {
+  pokemonController.create(req, resp);
 });
 
-application.put("/api/student/:id", (req, resp) => {
-  studentController.update(req, resp);
+application.delete("/api/pokemon/:id", (req, resp) => {
+  pokemonController.delete(req, resp);
 });
 
-application.delete("/api/student/:id", (req, resp) => {
-  studentController.delete(req, resp);
+
+//Team
+
+application.get("/api/team", (req, resp) => {
+  teamController.findAll(req, resp);
 });
+
+application.get("/api/team/:id", (req, resp) => {
+  teamController.findOne(req, resp);
+});
+
+application.post("/api/team/", (req, resp) => {
+  teamController.create(req, resp);
+});
+
+application.put("/api/team/:id", (req, resp) => {
+  teamController.update(req, resp);
+});
+
+application.delete("/api/team/:id", (req, resp) => {
+  teamController.delete(req, resp);
+});
+
+
+/* application.use('/api/player', require('./routes/player.routes'));
+application.use('/api/pokemon', require('./routes/pokemon.routes'));
+application.use('/api/team', require('./routes/team.routes')); */
+
 
 application.listen(PORT, () => {
   console.log(`Server running at port ${PORT}`);

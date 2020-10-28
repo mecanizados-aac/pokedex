@@ -1,25 +1,25 @@
 const db = require("../models/index");
-const Subject = db.Subject;
+const Player = db.Player;
 const Op = db.Sequelize.Op;
 const errorHandler = require("../helpers/functions");
 
 exports.create = (req, resp) => {
   // Llegó una petición date - ip.
-  if (!req.body.title || !req.body.cohort) {
+  if (!req.body.name || !req.body.surname) {
     resp.status(400).send({
       message: "Content cannot be emply",
     });
     return;
   }
 
-  const subject = {
-    title: req.body.title,
-    description: req.body.description,
-    cohort: req.body.cohort,
+  const player = {
+    name: req.body.name,
+    surname: req.body.surname,
+    imageProfile: req.body.imageProfile,
   };
 
-  // Se intenta crear una materia.
-  Subject.create(subject)
+  // Se intenta crear un player.
+  Player.create(player)
     .then((data) => {
       // Cuándo se resuelva satisfactoriamente.
       resp.send(data);
@@ -35,9 +35,9 @@ exports.create = (req, resp) => {
 };
 
 exports.findAll = (req, resp) => {
-  const title = req.query.title;
-  const condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-  Subject.findAll({ where: condition })
+  const name = req.query.name;
+  const condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
+  Player.findAll({ where: condition })
     .then((data) => {
       resp.send(data);
     })
@@ -52,7 +52,7 @@ exports.findAll = (req, resp) => {
 exports.findOne = (req, resp) => {
   const id = req.params.id;
 
-  Subject.findByPk(id)
+  Player.findByPk(id)
     .then((data) => {
       resp.send(data);
     })
@@ -67,41 +67,41 @@ exports.findOne = (req, resp) => {
 exports.update = (req, resp) => {
   const id = req.params.id;
 
-  Subject.update(req.body, { where: { id: id } })
+  Player.update(req.body, { where: { id: id } })
     .then((num) => {
       if (num == 1) {
         // -1 => Error, 0 => No lo ejecutó, 1 => OK, 2 => Not available.
         resp.send({
-          message: "Subject was updated successfully",
+          message: "Player was updated successfully",
         });
       } else {
         resp.status(404).send({
-          message: `Cannot update Subject with id=${id}, probably the entity doesn´t exists.`,
+          message: `Cannot update Player with id=${id}, probably the entity doesn´t exists.`,
         });
       }
     })
     .catch((err) => {
-      errorHandler(resp, "Error updating Subject");
+      errorHandler(resp, "Error updating Player");
     });
 };
 
 exports.delete = (req, resp) => {
   const id = req.params.id;
 
-  Subject.destroy({ where: { id: id } })
+  Player.destroy({ where: { id: id } })
     .then((num) => {
       if (num == 1) {
         // -1 => Error, 0 => No lo ejecutó, 1 => OK, 2 => Not available.
         resp.send({
-          message: "Subject was deleted successfully",
+          message: "Player was deleted successfully",
         });
       } else {
         resp.status(404).send({
-          message: `Cannot delete Subject with id=${id}, probably the entity doesn´t exists.`,
+          message: `Cannot delete Player with id=${id}, probably the entity doesn´t exists.`,
         });
       }
     })
     .catch((err) => {
-      errorHandler(resp, "Error deleting Subject");
+      errorHandler(resp, "Error deleting Player");
     });
 };

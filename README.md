@@ -2,6 +2,14 @@
 
 > _This code will be growing, as I learn in classes._
 
-**powered by**
+>
+>
+
+> # Constitution and operation
+
+***
+> >
+
+> ## **powered by**
 
 [![mecanizados|aac](assets/aldo_castillo_mecanizados.jpg)](github.com/mecanizados-aac/)
