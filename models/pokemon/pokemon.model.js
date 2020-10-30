@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
   const Pokemon = sequelize.define("pokemon", {
     order: {
-      type: Sequelize.NUMBER,
+      type: Sequelize.INTEGER,
     },
     name: {
       type: Sequelize.STRING,
@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     base_experience: {
-      type: Sequelize.NUMBER,
+      type: Sequelize.INTEGER,
     },
     sampleImage: {
       type: Sequelize.STRING,
