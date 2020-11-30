@@ -22,8 +22,9 @@ const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelizeInstanceDB = sequelizeInstanceDB;
-db.Player = require("./player/player.model")(sequelizeInstanceDB, Sequelize);
-db.Pokemon = require("./pokemon/pokemon.model")(sequelizeInstanceDB, Sequelize);
-db.Team = require("./team/team.model")(sequelizeInstanceDB, Sequelize);
+
+db.Pokemon = require("./pokemon.model")(sequelizeInstanceDB, Sequelize);
+db.Team = require("./team.model")(sequelizeInstanceDB, Sequelize);
+db.TeamPokemon = require("./team_pokemon.model")(sequelizeInstanceDB, Sequelize);
 
 module.exports = db;

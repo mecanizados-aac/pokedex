@@ -5,7 +5,8 @@ const errorHandler = require("../helpers/functions");
 
 exports.create = (req, resp) => {
   // Llegó una petición date - ip.
-  if (!req.body.player_id || !req.body.pokemon_id || !req.body.nickname) {
+  if (!req.body.name_team || !req.body.nickname_player /* || !req.body.pokemon_holder 
+      || !req.body.pokemon_substitute */) {
     resp.status(400).send({
       message: "Content cannot be emply",
     });
@@ -13,9 +14,11 @@ exports.create = (req, resp) => {
   }
 
   const team = {
-    player_id: req.body.player_id,
-    pokemon_id: req.body.pokemon_id,
-    nickname: req.body.nickname,
+    name_team: req.body.name_team,
+    nickname_player: req.body.nickname_player,
+    level: req.body.level/* ,
+    pokemon_holder: req.body.pokemon_holder,
+    pokemon_substitute: req.body.pokemon_substitute */
   };
 
   // Se intenta crear un team.
@@ -24,27 +27,27 @@ exports.create = (req, resp) => {
       // Cuándo se resuelva satisfactoriamente.
       resp.send(data);
     })
-    .catch((err) => {
+    .catch((error) => {
       // Cuándo no se resuelva y tengamos un error.
       // Lanzó un error de tipo xxxxxxx.
       errorHandler(
         resp,
-        err.message || "Something went wrong with the service"
+        error.message || "Something went wrong with the service"
       );
     });
 };
 
 exports.findAll = (req, resp) => {
-  const nickname = req.query.nickname;
-  const condition = nickname ? { nickname: { [Op.nickname]: `%${nickname}%` } } : null;
+  const name_team = req.query.name_team;
+  const condition = name_team ? { name_team: { [Op.name_team]: `%${name_team}%` } } : null;
   Team.findAll({ where: condition })
     .then((data) => {
-      resp.send(data);
+      resp.send(data);  
     })
-    .catch((err) => {
+    .catch((error) => {
       errorHandler(
         resp,
-        err.message || "Something went wrong with the service"
+        error.message || "Something went wrong with the service"
       );
     });
 };
@@ -56,10 +59,10 @@ exports.findOne = (req, resp) => {
     .then((data) => {
       resp.send(data);
     })
-    .catch((err) => {
+    .catch((error) => {
       errorHandler(
         resp,
-        err.message || "Something went wrong with the service"
+        error.message || "Something went wrong with the service"
       );
     });
 };
@@ -80,10 +83,11 @@ exports.update = (req, resp) => {
         });
       }
     })
-    .catch((err) => {
+    .catch((error) => {
       errorHandler(resp, "Error updating Team");
     });
 };
+
 
 exports.delete = (req, resp) => {
   const id = req.params.id;
@@ -101,7 +105,7 @@ exports.delete = (req, resp) => {
         });
       }
     })
-    .catch((err) => {
+    .catch((error) => {
       errorHandler(resp, "Error deleting Team");
     });
 };

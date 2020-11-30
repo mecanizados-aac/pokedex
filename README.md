@@ -1,14 +1,12 @@
-> _This repo it's related to the Programación 3 subject of Belgrano Institute._
+> _This repository constitutes the backend of the Pokedex project._
 
-> _This code will be growing, as I learn in classes._
+> _This code is made with pure languages: JavaScript._
 
->
->
+> _For its operation, you must install the axios library; using the command `npm install axios`._
 
-> # Constitution and operation
 
-***
-> >
+
+&nbsp;
 
 > ## **powered by**
 

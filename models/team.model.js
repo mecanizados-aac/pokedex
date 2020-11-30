@@ -1,15 +1,15 @@
 module.exports = (sequelize, Sequelize) => {
-  const Player = sequelize.define("player", {
-    name: {
+  const Team = sequelize.define("team", {
+    name_team: {
       type: Sequelize.STRING,
     },
-    surname: {
+    nickname_player: {
       type: Sequelize.STRING,
     },
-    imageProfile: {
+    level: {
       type: Sequelize.STRING,
-    },
+    }
   });
-  return Player;
+  return Team;
 };
   
