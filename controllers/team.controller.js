@@ -1,12 +1,10 @@
 const db = require("../models/index");
 const Team = db.Team;
-const Op = db.Sequelize.Op;
 const errorHandler = require("../helpers/functions");
 
 exports.create = (req, resp) => {
   // Llegó una petición date - ip.
-  if (!req.body.name_team || !req.body.nickname_player /* || !req.body.pokemon_holder 
-      || !req.body.pokemon_substitute */) {
+  if (!req.body.name_team || !req.body.nickname_player || !req.body.level) {
     resp.status(400).send({
       message: "Content cannot be emply",
     });
@@ -16,9 +14,7 @@ exports.create = (req, resp) => {
   const team = {
     name_team: req.body.name_team,
     nickname_player: req.body.nickname_player,
-    level: req.body.level/* ,
-    pokemon_holder: req.body.pokemon_holder,
-    pokemon_substitute: req.body.pokemon_substitute */
+    level: req.body.level
   };
 
   // Se intenta crear un team.
@@ -38,9 +34,7 @@ exports.create = (req, resp) => {
 };
 
 exports.findAll = (req, resp) => {
-  const name_team = req.query.name_team;
-  const condition = name_team ? { name_team: { [Op.name_team]: `%${name_team}%` } } : null;
-  Team.findAll({ where: condition })
+  Team.findAll()
     .then((data) => {
       resp.send(data);  
     })

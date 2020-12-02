@@ -1,11 +1,13 @@
 const db = require("../models/index");
 const Pokemon = db.Pokemon;
 const errorHandler = require("../helpers/functions");
+const Op = db.Sequelize.Op;
 const axios = require('axios');
 
 exports.create = (req, resp) => {
   // Llegó una petición date - ip.
-  if (!req.body.id_pokemon || !req.body.name || !req.body.type || !req.body.base_experience) {
+  if (!req.body.id_pokemon || !req.body.name || !req.body.type 
+    || !req.body.base_experience || !req.body.sampleImage) {
     resp.status(400).send({
       message: "Content cannot be emply",
     });

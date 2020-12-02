@@ -1,6 +1,5 @@
 const db = require("../models/index");
 const TeamPokemon = db.TeamPokemon;
-const Op = db.Sequelize.Op;
 const errorHandler = require("../helpers/functions");
 
 exports.create = (req, resp) => {

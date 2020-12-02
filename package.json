@@ -1,5 +1,5 @@
 {
-  "name": "example_first",
+  "name": "pokedex",
   "version": "1.0.0",
   "description": "First Api",
   "main": "index.js",
